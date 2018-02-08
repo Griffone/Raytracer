@@ -4,7 +4,14 @@ import Ray
 
 defmodule Sphere do
     
-    defstruct pos: {0, 0, 0}, radius: 2
+    @moduledoc """
+    A Sphere representation.
+    """
+
+    @default_diffuse { 0.8, 0.8, 0.8 }
+    @default_specular { 1, 1, 1}
+
+    defstruct pos: {0, 0, 0}, radius: 2, diffuse: @default_diffuse, specular: @default_specular, isLit: true
 
     defimpl Object do
       
@@ -40,6 +47,10 @@ defmodule Sphere do
                     end
                 end
             end
+        end
+
+        def normal(sphere = %Sphere{}, point) do
+            Vector.normalize(Vector.sub(point, sphere.pos))
         end
 
     end

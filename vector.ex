@@ -25,6 +25,10 @@ defmodule Vector do
         {x1 + y1, x2 + y2, x3 + y3}
     end
 
+    def mul({x1, x2, x3}, {y1, y2, y3}) do
+        { x1*y1, x2*y2, x3*y3 }
+    end
+
     @doc """
     Find a dot product of two vectors.
     """
